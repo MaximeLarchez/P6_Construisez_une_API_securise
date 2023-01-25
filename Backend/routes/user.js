@@ -4,7 +4,7 @@ const express = require('express');
 // const auth = require('../middleware/auth');
 // creation du router
 const router = express.Router();
-// controller qui associe les fonctions au differentes routes 
+// controler qui associe les fonctions au differentes routes
 const userCtrl = require('../controllers/user');
 
 
