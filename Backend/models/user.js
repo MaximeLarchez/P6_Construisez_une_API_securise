@@ -13,3 +13,5 @@ userSchema.plugin(uniqueValidator);
 
 // Exportation du model mongoose userSchema
 module.exports = mongoose.model('user', userSchema);
+
+
