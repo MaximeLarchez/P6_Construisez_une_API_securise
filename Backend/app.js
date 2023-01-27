@@ -9,7 +9,7 @@ app.use(express.json());
 // creation de la route pour le user.js
 const userRoutes = require('./routes/user');
 // appel du modele de sauces.js 
-const Sauce = require('./models/Sauce')
+const sauceRoutes = require('./routes/Sauce');
 
 
 // cluster mongodbAtlas
@@ -35,15 +35,10 @@ app.use('/api/auth', userRoutes);
 
 
 // route pour crée une nouvelle sauce
-app.post('/api/sauces', (req,res,next) => {
-  delete req.body._id;
-  const sauce = new Sauce({
-    ...req.body
-  });
-  sauce.save()
-  .then(() => res.status(201).json({ message: 'Sauce enregistré !'}))
-  .catch(error => res.status(400).json({ error }));
-});
+app.post('/api/sauces', sauceRoutes);
+
+
+
 
 
 
