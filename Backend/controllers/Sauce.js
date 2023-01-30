@@ -19,3 +19,20 @@ exports.createSauce = (req, res, next) => {
         .then(() => res.status(201).json({message:'sauce enregistrée'}))
         .catch((error) => res.status(400).json({ error }))
 };
+
+
+exports.deleteSauce = (req, res, next) => {
+  Sauce.deleteOne({_id: req.params.id})
+  .then(() => {
+      res.status(200).json({
+        message: 'Supprimer'
+      });
+    }
+  )
+  .catch((error) => {
+      res.status(400).json({
+        error: error
+      });
+    }
+  );
+};

@@ -4,8 +4,11 @@ const sauceCtrl = require('../controllers/Sauce')
 
 
 
-// route post 
-router.post('/', sauceCtrl.createSauce);
+// route pour crée une sauce
+router.post('/sauces', sauceCtrl.createSauce);
+
+// route delete avec l'id 
+router.delete('/:id', sauceCtrl.deleteSauce);
 
 // route get pour tout les produits 
 
@@ -13,7 +16,6 @@ router.post('/', sauceCtrl.createSauce);
 
 // route put pour modifier l'id 
 
-// route delete avec l'id 
 
 // route post pour le like et dislike ( id + like )
 

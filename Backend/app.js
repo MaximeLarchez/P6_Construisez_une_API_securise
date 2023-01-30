@@ -10,6 +10,7 @@ app.use(express.json());
 const userRoutes = require('./routes/user');
 // appel du modele de sauces.js 
 const sauceRoutes = require('./routes/Sauce');
+const Sauce = require('./models/Sauce');
 
 
 // cluster mongodbAtlas
@@ -33,12 +34,11 @@ mongoose.connect('mongodb+srv://Maxime:pepee.10@cluster0.6uxglzi.mongodb.net/?re
 // route pour User
 app.use('/api/auth', userRoutes);
 
-
 // route pour crée une nouvelle sauce
-app.post('/api/sauces', sauceRoutes);
+app.use('/api', sauceRoutes);
 
-
-
+// route pour supprimer une sauce
+app.delete('/api/sauces', sauceRoutes);
 
 
 
