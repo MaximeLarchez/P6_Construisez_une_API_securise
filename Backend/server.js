@@ -6,6 +6,7 @@ const app = require('./app');
 
 // permet de dire a l'application sur quelle PORT elle va fonctionné
 app.set('port', process.env.PORT || 3000);
+
 // variable qui crée un serveur 
 const server = http.createServer(app);
 
