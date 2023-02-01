@@ -5,6 +5,7 @@ const fs = require('fs')
 exports.createSauce = (req, res) => {
   const sauceObject = JSON.parse(req.body.sauce)
   delete sauceObject._userId;
+  
 
     const sauce = new Sauce({
      ...sauceObject,
@@ -23,7 +24,12 @@ exports.getAllSauce = (req, res) => {
     .catch(error => res.status(400).json({ error }));
 };
 
-
+// affichage d'une sauce grace a son ID
+exports.getOneSauce = (req, res) => {
+  Sauce.findOne({_id: req.params.id})
+    .then(sauce => res.status(200).json(sauce))
+    .catch(error => res.status(404).json({ error }));
+};
 
 
 // modifier la sauce
@@ -66,11 +72,3 @@ exports.deleteSauce = (req, res) => {
 };
 
 
-// affichage d'une sauce en particulier
-exports.getOneSauce = (req, res) => {
-  Sauce.findOne({
-    _id: req.params.id
-  })
-  .then(sauce =>  res.status(200).json(sauce))
-  .catch(error => res.status(404).json({error}));
-};

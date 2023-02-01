@@ -5,7 +5,6 @@ const mongoose = require('mongoose');
 mongoose.set('strictQuery', true);
 // variable qui sera l'application d'express et permettra de l'utiliser
 const app = express();
-
 // appel de path
 const path = require('path');
 // creation de la route pour le user.js
@@ -36,18 +35,12 @@ mongoose.connect('mongodb+srv://Maxime:pepee.10@cluster0.6uxglzi.mongodb.net/?re
 
 // route pour User
 app.use('/api/auth', userRoutes);
-
 // route pour Sauces
 app.use('/api/sauces', sauceRoutes);
-
+// route pour images
 app.use('/images', express.static(path.join(__dirname,"images")))
 
 
-// // localhost:3000
-// app.use((req, res, next) => {
-//   res.json({ message: 'Votre requête a bien été reçue !' }); 
-  
-// });
 
 
 
