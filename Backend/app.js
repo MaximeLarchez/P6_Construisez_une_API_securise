@@ -11,8 +11,10 @@ const path = require('path');
 const userRoutes = require('./routes/user');
 // appel du modele de sauces.js 
 const sauceRoutes = require('./routes/Sauce');
-
-
+// appel de helmet
+const helmet = require('helmet');
+// appel de morgan
+const morgan = require('morgan');
 
 // cluster mongodbAtlas
 mongoose.connect('mongodb+srv://Maxime:pepee.10@cluster0.6uxglzi.mongodb.net/?retryWrites=true&w=majority',
@@ -27,9 +29,14 @@ mongoose.connect('mongodb+srv://Maxime:pepee.10@cluster0.6uxglzi.mongodb.net/?re
       res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
       next();
   });
-  app.use(express.json());
+  
+app.use(express.json());
 
+  // loguer les req et res 
+app.use(morgan('dev'));
 
+// utilisation de helmet pour la sécurité des headers 
+app.use(helmet({crossOriginResourcePolicy: false,}));
 
 
 
