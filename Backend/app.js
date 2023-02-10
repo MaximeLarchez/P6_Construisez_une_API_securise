@@ -1,28 +1,24 @@
 // Importation de express
 const express = require('express');
-// Importation de Mongoose
-const mongoose = require('mongoose');
-mongoose.set('strictQuery', true);
+// Importation de Mongoose depuis db.js
+const mongoose = require('./mongoDB/db');
+mongoose.set('strictQuery', true)
 // variable qui sera l'application d'express et permettra de l'utiliser
 const app = express();
 // appel de path
 const path = require('path');
-// creation de la route pour le user.js
+// appel de la route pour le user.js
 const userRoutes = require('./routes/user');
-// appel du modele de sauces.js 
+// appel de la route sauces.js 
 const sauceRoutes = require('./routes/Sauce');
 // appel de helmet
 const helmet = require('helmet');
 // appel de morgan
 const morgan = require('morgan');
 
-// cluster mongodbAtlas
-mongoose.connect('mongodb+srv://Maxime:pepee.10@cluster0.6uxglzi.mongodb.net/?retryWrites=true&w=majority',
-  { useNewUrlParser: true,
-    useUnifiedTopology: true })
-  .then(() => console.log('Connexion à MongoDB réussie !'))
-  .catch(() => console.log('Connexion à MongoDB échouée !'));
 
+
+// CORS(Cross-Origin Ressource Sharing || partage des ressource entre origines multiples)
   app.use((req, res, next) => {
       res.setHeader('Access-Control-Allow-Origin', '*');
       res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
@@ -32,7 +28,7 @@ mongoose.connect('mongodb+srv://Maxime:pepee.10@cluster0.6uxglzi.mongodb.net/?re
   
 app.use(express.json());
 
-  // loguer les req et res 
+// loguer les req et res dans le terminal
 app.use(morgan('dev'));
 
 // utilisation de helmet pour la sécurité des headers 
