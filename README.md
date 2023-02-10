@@ -14,7 +14,7 @@ Backend :
 
     Vous pouvez ensuite crée un fichier .env à la racine du répertoire et y mettre les valeurs correctes pour se connecter à une base de données mongodb:
 
-        PORT = 3000 (le ffront fonctionne avec le backend sur le port 3000)
+        PORT = 3000 (le front fonctionne avec le backend sur le port 3000)
 
         DB_USERNAME = "Username de la base de données mongodb"
 
